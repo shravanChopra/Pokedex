@@ -94,6 +94,7 @@
                     <navigationItem key="navigationItem" id="UnZ-AQ-RH1"/>
                     <connections>
                         <outlet property="pokeCollectionView" destination="x14-cD-iIx" id="vHl-AH-zQS"/>
+                        <outlet property="searchBar" destination="CyP-T5-9m5" id="0kv-vE-81L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
