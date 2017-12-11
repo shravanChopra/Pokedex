@@ -11,9 +11,9 @@ import UIKit
 class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // to store and display pokemon data
-    @IBOutlet weak var pokeCollectionView: UICollectionView!
     var pokemon: [Pokemon]!
-    
+    @IBOutlet weak var pokeCollectionView: UICollectionView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
