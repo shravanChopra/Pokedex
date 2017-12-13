@@ -97,12 +97,26 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toPokemonDetailsVC", sender: pokemon[indexPath.row])
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: 110, height: 110)
     }
     
+    // pass along the pokemon that the user tapped on
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let pokedetailsVC = segue.destination as? PokemonDetailsVC {
+            if let sendingPokemon = sender as? Pokemon {
+                pokedetailsVC.pokemon = sendingPokemon
+            }
+        }
+    }
+    
     // --------------------- Search bar function to implement search-filtering -------------------
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchBar.text == nil || searchBar.text == "" {
