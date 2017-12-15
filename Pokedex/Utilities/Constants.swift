@@ -8,13 +8,10 @@
 
 import Foundation
 
-let POKE_ATTRIBUTES_DICT = [
-    0: "Type",
-    1: "HP",
-    2: "Height",
-    3: "Attack",
-    4: "Weight",
-    5: "Defense"
-]
+// base URL for making API calls for attributes
+let BASE_URL = "https://pokeapi.co/api/v2/"
+let POKE_ATTRIB_URL = "pokemon/"
+let POKE_EVOLUTION_URL = "evolution-chain/"
 
-// TODO - add base URL's for normal and evolution stats to make API calls!
+// type alias for Alamofire API calls
+typealias DownloadComplete = () -> ()

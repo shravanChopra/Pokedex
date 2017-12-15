@@ -209,8 +209,14 @@
                         <viewLayoutGuide key="safeArea" id="Grs-0L-b3a"/>
                     </view>
                     <connections>
+                        <outlet property="attackLbl" destination="x6G-5a-OOI" id="3qI-bR-wbE"/>
+                        <outlet property="defenseLbl" destination="0M3-eB-a8h" id="Xp0-VL-Hqj"/>
+                        <outlet property="heightLbl" destination="3ic-qY-rIf" id="uu6-0l-5de"/>
+                        <outlet property="hpLbl" destination="aUX-qR-xHx" id="4q0-DO-p0H"/>
                         <outlet property="pokeIDLbl" destination="7Du-jB-OjN" id="WN2-wJ-agB"/>
                         <outlet property="pokeImg" destination="Czd-DN-JiK" id="s2Y-8l-9t4"/>
+                        <outlet property="typeLbl" destination="sX9-ef-hHB" id="2wE-ag-nbc"/>
+                        <outlet property="weightLbl" destination="H7o-mN-c8R" id="jhF-uC-LJK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijN-bt-5AN" userLabel="First Responder" sceneMemberID="firstResponder"/>
