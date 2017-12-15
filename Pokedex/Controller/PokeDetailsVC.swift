@@ -23,7 +23,7 @@ class PokeDetailsVC: UIViewController {
     @IBOutlet weak var pokeIDLbl: UILabel!
     
     // to store pokemon attributes
-    var type: String!
+    var type: String = ""
     var hp: Int = 0
     var height: Int = 0
     var weight: Int = 0
@@ -52,12 +52,21 @@ class PokeDetailsVC: UIViewController {
     // Function: Sets up initial UI with details of passed in pokemon
     private func initUI() {
         
-        // TODO: replace back button with a nice image, hiding for now
-        self.navigationItem.hidesBackButton = true
-        
         self.title = _pokemon.name.capitalized
         pokeImg.image = UIImage(named: _pokemon.id)
         pokeIDLbl.text = "#\(_pokemon.id)"
+        
+        
+        // TODO: replace back button with a nice image, hiding for now
+        self.navigationItem.hidesBackButton = true
+        
+        // initially, clear all labels
+        typeLbl.text = ""
+        hpLbl.text = ""
+        attackLbl.text = ""
+        defenseLbl.text = ""
+        heightLbl.text = ""
+        weightLbl.text = ""
     }
     
     // Function: Performs a GET API call with id of passed in pokemon
@@ -70,6 +79,25 @@ class PokeDetailsVC: UIViewController {
             
             if let resultsDict = response.value as? Dictionary<String, Any> {
                 
+                // accessing type information
+                if let types = resultsDict["types"] as? [Dictionary<String, Any>] {
+                    
+                    if let firstType = types[0]["type"] as? Dictionary<String, Any> {
+                        if let firstTypeName = firstType["name"] as? String {
+                            self.type = firstTypeName.capitalized
+                        }
+                    }
+                    
+                    if types.count > 1 {
+                        for x in 1..<types.count {
+                            if let typeItem = types[x]["type"] as? Dictionary<String, Any> {
+                                if let typeName = typeItem["name"] as? String {
+                                   self.type = "\(self.type) / \(typeName.capitalized)"
+                                }
+                            }
+                        }
+                    }
+                }
                 
                 // accessing stats for attack, defense and HP
                 if let stats = resultsDict["stats"] as? [Dictionary<String, Any>] {
@@ -108,7 +136,7 @@ class PokeDetailsVC: UIViewController {
     
     // Function: Updates pokemon details UI with results obtained from API call
     private func updateAttributesUI() {
-        
+        typeLbl.text = type
         hpLbl.text = "\(hp)"
         attackLbl.text = "Attack: \(attack)"
         defenseLbl.text = "Defense: \(defense)"
