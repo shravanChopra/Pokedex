@@ -11,7 +11,6 @@ import Foundation
 // base URL for making API calls for attributes
 let BASE_URL = "https://pokeapi.co/api/v2/"
 let POKE_ATTRIB_URL = "pokemon/"
-let POKE_EVOLUTION_URL = "evolution-chain/"
 
 // type alias for Alamofire API calls
 typealias DownloadComplete = () -> ()

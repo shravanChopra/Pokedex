@@ -69,7 +69,7 @@ class PokeDetailsVC: UIViewController {
         weightLbl.text = ""
     }
     
-    // Function: Performs a GET API call with id of passed in pokemon
+    // Function: Makes an API call to fetch attributes with id of passed in pokemon
     private func fetchPokemonData(completed: @escaping DownloadComplete) {
         
         let urlString = "\(BASE_URL)\(POKE_ATTRIB_URL)\(_pokemon.id)"
