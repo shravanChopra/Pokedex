@@ -98,7 +98,17 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toPokemonDetailsVC", sender: pokemon[indexPath.row])
+        
+        var sendingPokemon: Pokemon
+        
+        if inSearchMode {
+            sendingPokemon = filteredPokemon[indexPath.row]
+        }
+        else {
+            sendingPokemon = pokemon[indexPath.row]
+        }
+        
+        performSegue(withIdentifier: "toPokemonDetailsVC", sender: sendingPokemon)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -108,7 +118,7 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     // pass along the pokemon that the user tapped on
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let pokedetailsVC = segue.destination as? PokemonDetailsVC {
+        if let pokedetailsVC = segue.destination as? PokeDetailsVC {
             if let sendingPokemon = sender as? Pokemon {
                 pokedetailsVC.pokemon = sendingPokemon
             }
